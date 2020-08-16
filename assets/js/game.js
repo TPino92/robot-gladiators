@@ -28,7 +28,7 @@ var fightOrSkip = function() {
 
     //if yes, leave fight
     if (confirmSkip)  {
-      window.alert(playerInfo.anme = " has decided to skip this fight. Goodbye!");
+      window.alert(playerInfo.name = " has decided to skip this fight. Goodbye!");
       //subtrack money for leaving
       playerInfo.money = Math.max(0, playerInfo.money - 10);
 
@@ -41,12 +41,12 @@ var fightOrSkip = function() {
 var fight = function(enemy) {
   // keep track of who goes first
   var isPlayerTurn = true;
-​
+
   // randomly change turn order
   if (Math.random() > 0.5) {
     isPlayerTurn = false;
   }
-​
+
   while (playerInfo.health > 0 && enemy.health > 0) {
     if (isPlayerTurn) {
       // ask user if they'd like to fight or skip using fightOrSkip function
@@ -54,9 +54,9 @@ var fight = function(enemy) {
         // if true, leave fight by breaking loop
         break;
       }
-​
+
       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-​
+
       // remove enemy's health by subtracting the amount we set in the damage variable
       enemy.health = Math.max(0, enemy.health - damage);
       console.log(
@@ -69,14 +69,14 @@ var fight = function(enemy) {
           enemy.health +
           " health remaining."
       );
-​
+
       // check enemy's health
       if (enemy.health <= 0) {
         window.alert(enemy.name + " has died!");
-​
+
         // award player money for winning
         playerInfo.money = playerInfo.money + 20;
-​
+
         // leave while() loop since enemy is dead
         break;
       } else {
@@ -85,7 +85,7 @@ var fight = function(enemy) {
       // player gets attacked first
     } else {
       var damage = randomNumber(enemy.attack - 3, enemy.attack);
-​
+
       // remove enemy's health by subtracting the amount we set in the damage variable
       playerInfo.health = Math.max(0, playerInfo.health - damage);
       console.log(
@@ -98,7 +98,7 @@ var fight = function(enemy) {
           playerInfo.health +
           " health remaining."
       );
-​
+
       // check player's health
       if (playerInfo.health <= 0) {
         window.alert(playerInfo.name + " has died!");
@@ -194,13 +194,13 @@ var shop = function () {
   shopOptionPrompt = parseInt(shopOptionPrompt);
 
   switch (shopOptionPrompt) {
-    case "1":
+    case 1:
       playerInfo.refillHealth();
       break;
-    case "2":
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case "3":
+    case 3:
       window.alert("Leaving the store.");
       break;
     default:
